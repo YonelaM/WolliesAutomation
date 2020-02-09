@@ -119,23 +119,21 @@ public class WebwisePage {
      
      
     
-    public void Authentication () {
+    public void ViewOrderProcessing () {
 
-        wd.findElement(By.xpath("//hj-dropdownlist[@data-hj-test-id='authenticationMode']")).click();
-        System.out.println("About to Select Workspace Authentication As An Option!");
+        ClickElementByXpath("//a[contains(.,'Orders')]");
+        ClickElementByXpath("//a[contains(.,'View Order Reports')]");
+        ClickElementByXpath("//a[contains(.,'View Order Processing')]");
+        
+        waitForElementToBePresent("//a[contains(.,'View Order Processing')]");
+        System.out.println("Landed on Order Processing Page!!");
+        
+//        wd.findElements(By.xpath("//span[@class='k-widget k-dropdown k-header' and contains(.,'ANY')]")).get(0).click();
+        
+        
+        
 
-        wd.findElement(By.xpath("//div[@class='k-animation-container']/descendant::li[contains(.,'Workspace Authentication')]")).click();
-        System.out.println("Workspace Authentication Option Selected!");
-
-        sendKeys("//input[@class='k-textbox' and @placeholder='User Name']", "Yonela");
-        sendKeys("//input[@class='k-textbox' and @placeholder='Password']", "YON");
-
-        ClickElementByXpath("//button[@class='k-button']");
-        waitForElementToBePresent("//h4[contains(.,'Loading Applications')]");
-        waitForElementToBePresent("//div[@class='thread-title' and contains(.,'Home Page')]");
-
-        System.out.println("Logged in successfully!");
-            
+        
 //            driver.findElement(By.xpath("//div[@class='k-animation-container']/descendant::li[contains(.,'Workspace Authentication')]"));
 //             driver.findElement(By.xpath("//select//option[@value=2]")).click();
 //             driver.findElement(By.xpath("//li[contains(.,'Workspace Authentication')]")).click();
@@ -167,13 +165,39 @@ public class WebwisePage {
 //}
 
     }
-  
-    /*
-    public WebwisePage Login(){
     
-        return "";
+    public void navigateToOrders(){
+        
+        ClickElementByXpath("//i[@class='fa fa-bars fa-fw']");
+        waitForElementToBePresent("//a[contains(.,'Supply Chain Advantage')]");
+        ClickElementByXpath("//a[contains(.,'Supply Chain Advantage')]");
+        ClickElementByXpath("//a[contains(.,'Retail Advantage Dashboard')]");
     }
-    */
+    public void Login(){
+        
+        wd.findElement(By.xpath("//hj-dropdownlist[@data-hj-test-id='authenticationMode']")).click();
+        System.out.println("About to Select Workspace Authentication As An Option!");
+
+        wd.findElement(By.xpath("//div[@class='k-animation-container']/descendant::li[contains(.,'Workspace Authentication')]")).click();
+        System.out.println("Workspace Authentication Option Selected!");
+        sendKeys("//input[@class='k-textbox' and @placeholder='User Name']", "Yonela");
+        sendKeys("//input[@class='k-textbox' and @placeholder='Password']", "YON");
+
+        ClickElementByXpath("//button[@class='k-button']");
+        waitForElementToBePresent("//h4[contains(.,'Loading Applications')]");
+        waitForElementToBePresent("//div[@class='thread-title' and contains(.,'Home Page')]");
+
+        System.out.println("Logged in successfully!");
+        
+    }
+    public void Logout(String Nname){
+      
+        ClickElementByXpath("//a[contains(.,'"+Nname+"')]");
+        ClickElementByXpath("//a[contains(.,'Logout')]");
+        ClickElementByXpath("//div[@data-hj-test-id='flex-container']/descendant::button[contains(.,'Logout')]");
+        System.out.println("System logged out!!");
+    }
+    
     public void sendKeys(String Xpath, String Value){
         wd.findElement(By.xpath(Xpath)).sendKeys(Value);
     }

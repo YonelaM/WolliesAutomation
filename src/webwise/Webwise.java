@@ -20,7 +20,10 @@ public class Webwise{
             
             instance.setUp();
             instance.navigateToUrl("https://hjqa02.woolworths.co.za/core/Default.html");
-            instance.Authentication();
+            instance.Login();
+            instance.navigateToOrders();
+            instance.ViewOrderProcessing(); //View Order Processing
+            instance.Logout("Yonela Mayeza");
             instance.tearDown();
     //       ClickElementByXpath("//hj-dropdownlist[@data-hj-test-id='authenticationMode']");
 //           driver.findElement(By.xpath("//hj-dropdownlist[@data-hj-test-id='authenticationMode']")).click();
