@@ -11,7 +11,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import static scanners.Scanners.driver;
+import static scanners.Scanners.wd;
 import org.openqa.selenium.support.ui.Select;
 
 /**
@@ -24,24 +24,24 @@ public class Page {
     
     public void setUp(){
         System.setProperty("webdriver.chrome.driver", "C:\\Users\\W7134551\\Desktop\\Softwares\\chromedriver_win32\\chromedriver.exe");
-        driver = new ChromeDriver();
+        wd = new ChromeDriver();
     }
     
     public void navigateToUrl(String Url){
         System.out.println("Launching chrome browser");
-        driver.get(Url);
-        driver.manage().window().maximize();
+        wd.get(Url);
+        wd.manage().window().maximize();
     }
     
     public void signIn(String ServerName, String PortNumber, String DeviceName){
-          driver.findElement(By.xpath("//input[@name='server_name']")).sendKeys(ServerName);
-          driver.findElement(By.xpath("//input[@name='port_number']")).sendKeys(PortNumber);
-          driver.findElement(By.xpath("//input[@name='terminal_name']")).sendKeys(DeviceName);
-          Select screensize = new Select(driver.findElement(By.name("screen_size")));
+          wd.findElement(By.xpath("//input[@name='server_name']")).sendKeys(ServerName);
+          wd.findElement(By.xpath("//input[@name='port_number']")).sendKeys(PortNumber);
+          wd.findElement(By.xpath("//input[@name='terminal_name']")).sendKeys(DeviceName);
+          Select screensize = new Select(wd.findElement(By.name("screen_size")));
 	  screensize.selectByVisibleText("8x40");
  
-          driver.findElement(By.xpath("//input[@value='Submit']")).click();
-          driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+          wd.findElement(By.xpath("//input[@value='Submit']")).click();
+          wd.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
           
 //          String validate = driver.findElement(By.xpath("//td[text()='Manger Id : mngr209200']")).getText();
 //          System.out.println("The value: "+validate);
@@ -51,11 +51,11 @@ public class Page {
 //            }
     }
     public void Login (String userid){
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        wd.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 //        driver.findElement(By.xpath("//a[text()='New Customer']")).click();
-        driver.findElement(By.xpath("//input[@name='inputdata']")).sendKeys(userid);
-        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-        driver.findElement(By.xpath("//input[@value='Submit']")).click();
+        wd.findElement(By.xpath("//input[@name='inputdata']")).sendKeys(userid);
+        wd.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        wd.findElement(By.xpath("//input[@value='Submit']")).click();
 //        driver.findElement(By.xpath("//input[@value='f']")).click();
 //        driver.findElement(By.xpath("//input[@id='dob']")).sendKeys(Keys.TAB); 
 //        driver.findElement(By.xpath("//input[@id='dob']")).sendKeys("09/19");
@@ -82,17 +82,17 @@ public class Page {
     }
     public void Password (String pass){
 //         driver.findElement(By.xpath("//a[text()='Edit Customer']")).click();
-         driver.findElement(By.xpath("//input[@name='inputdata']")).sendKeys(pass);
-         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-         driver.findElement(By.xpath("//input[@value='Submit']")).click();
+         wd.findElement(By.xpath("//input[@name='inputdata']")).sendKeys(pass);
+         wd.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+         wd.findElement(By.xpath("//input[@value='Submit']")).click();
   
     }
     public void Trolley (String back){
-         driver.findElement(By.xpath("//input[@name='inputdata']")).sendKeys(back);
+         wd.findElement(By.xpath("//input[@name='inputdata']")).sendKeys(back);
 //         driver.findElement(By.xpath("//input[@name='inputdata']")).sendKeys(equipment);
-         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-         driver.findElement(By.xpath("//input[@value='Submit']")).click();
-         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+         wd.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+         wd.findElement(By.xpath("//input[@value='Submit']")).click();
+         wd.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
          
            
 //         driver.switchTo().alert().accept();

@@ -2,7 +2,7 @@ package webwise;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import static scanners.Scanners.driver;
+import static scanners.Scanners.wd;
 
 /**
  *
@@ -12,7 +12,6 @@ public class Webwise{
     
     public static WebDriver driver;
  
-    
     public static void main(String[] args){
     
        WebwisePage instance = new WebwisePage();

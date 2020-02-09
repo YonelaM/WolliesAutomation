@@ -14,7 +14,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
-import static scanners.Scanners.driver;
+import static scanners.Scanners.wd;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -28,22 +28,22 @@ public class WebwisePage {
     
     public void setUp(){
         System.setProperty("webdriver.chrome.driver", "C:\\Users\\W7134551\\Desktop\\Softwares\\chromedriver_win32\\chromedriver.exe");
-        driver = new ChromeDriver();
+        wd = new ChromeDriver();
     }
     
     public void navigateToUrl(String Url){
         System.out.println("Launching chrome browser");
-        driver.get(Url);
-        driver.manage().window().maximize();
+        wd.get(Url);
+        wd.manage().window().maximize();
     }
     
     public void tearDown(){
-    driver.quit();
+    wd.quit();
     }
     
 
     
-        WebDriver wait = new WebDriver() {
+    WebDriver wait = new WebDriver() {
 
         @Override
         public void get(String string) {
@@ -113,7 +113,7 @@ public class WebwisePage {
         
      public void waitForElementToBePresent(String Xpath){
          
-        WebDriverWait wait = new WebDriverWait(driver, 15);
+        WebDriverWait wait = new WebDriverWait(wd, 15);
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(Xpath)));
      }
      
@@ -121,10 +121,10 @@ public class WebwisePage {
     
     public void Authentication () {
 
-        driver.findElement(By.xpath("//hj-dropdownlist[@data-hj-test-id='authenticationMode']")).click();
+        wd.findElement(By.xpath("//hj-dropdownlist[@data-hj-test-id='authenticationMode']")).click();
         System.out.println("About to Select Workspace Authentication As An Option!");
 
-        driver.findElement(By.xpath("//div[@class='k-animation-container']/descendant::li[contains(.,'Workspace Authentication')]")).click();
+        wd.findElement(By.xpath("//div[@class='k-animation-container']/descendant::li[contains(.,'Workspace Authentication')]")).click();
         System.out.println("Workspace Authentication Option Selected!");
 
         sendKeys("//input[@class='k-textbox' and @placeholder='User Name']", "Yonela");
@@ -175,19 +175,19 @@ public class WebwisePage {
     }
     */
     public void sendKeys(String Xpath, String Value){
-        driver.findElement(By.xpath(Xpath)).sendKeys(Value);
+        wd.findElement(By.xpath(Xpath)).sendKeys(Value);
     }
     
     public void ClickElementByXpath(String Xpath){
-    driver.findElement(By.xpath(Xpath)).click();
+    wd.findElement(By.xpath(Xpath)).click();
     }
     
    public void ClickElementById(String id){
-    driver.findElement(By.id(id)).click();
+    wd.findElement(By.id(id)).click();
     }
    
   public void ClickElementByName(String name){
-    driver.findElement(By.xpath(name)).click();
+    wd.findElement(By.xpath(name)).click();
     }
    
     public void menu (){
